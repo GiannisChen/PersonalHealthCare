@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.personalhealthcare.ChangePasswordActivity;
 import com.example.personalhealthcare.FigureDataActivity;
 import com.example.personalhealthcare.OrdinaryUserActivity;
 import com.example.personalhealthcare.R;
@@ -57,6 +58,8 @@ public class SettingsFragment extends Fragment {
         itemDeleteUser.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
         itemDeleteUser.getTextView().setTextColor(getResources().getColor(R.color.qmui_config_color_red));
 
+        //按钮监听（3）
+        //jump to figure_data
         View.OnClickListener toFigureDataListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +67,25 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getActivity(), text + " is Clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), FigureDataActivity.class);
                 startActivity(intent);
+            }
+        };
+
+        //jump to password_change
+        View.OnClickListener toChangePasswordListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = ((QMUICommonListItemView) v).getText();
+                Toast.makeText(getActivity(), text + " is Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        //delete user
+        View.OnClickListener deleteUserListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         };
 
@@ -87,7 +109,7 @@ public class SettingsFragment extends Fragment {
                 .setDescription("...")
                 .setLeftIconSize(QMUIDisplayHelper.dp2px(getContext(), 20), ViewGroup.LayoutParams.WRAP_CONTENT)
                 .addItemView(itemFigureData, toFigureDataListener)
-                .addItemView(itemChangePSWD, onClickListener)
+                .addItemView(itemChangePSWD, toChangePasswordListener)
                 .addItemView(itemDeleteUser, onClickListener)
                 .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(getContext(), 16), 0)
                 .addTo(mGroupListView);

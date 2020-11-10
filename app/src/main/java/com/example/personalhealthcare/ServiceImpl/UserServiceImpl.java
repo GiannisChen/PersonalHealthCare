@@ -18,4 +18,16 @@ public class UserServiceImpl implements UserService {
     public Boolean updateOrdinary(OrdinaryUser user) {
         return userDao.updateOrdinary(user);
     }
+
+    @Override
+    public Boolean updatePassword(Integer UserID, String oldPassword, String newPassword) {
+        OrdinaryUser user = userDao.findOrdinaryByID(UserID);
+        if(user != null) {
+            if (oldPassword.equals(user.getBaseInfo().getUserPassword())) {
+                user.getBaseInfo().setUserPassword(newPassword);
+                return userDao.updateOrdinary(user);
+            }
+        }
+        return false;
+    }
 }
