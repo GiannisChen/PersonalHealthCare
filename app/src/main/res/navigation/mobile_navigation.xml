@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.personalhealthcare.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_diet"
+        android:name="com.example.personalhealthcare.ui.Diet.DietFragment"
+        android:label="@string/title_diet"
+        tools:layout="@layout/fragment_diet" />
+
+    <fragment
+        android:id="@+id/navigation_sleep_state"
+        android:name="com.example.personalhealthcare.ui.SleepState.SleepStateFragment"
         android:label="@string/title_sleep_state"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_sleep_state" />
 
     <fragment
         android:id="@+id/navigation_settings"

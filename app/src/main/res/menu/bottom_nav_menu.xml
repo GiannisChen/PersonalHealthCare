@@ -7,7 +7,12 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_diet"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_diet" />
+
+    <item
+        android:id="@+id/navigation_sleep_state"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_sleep_state" />
 

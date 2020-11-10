@@ -138,7 +138,7 @@ public class FigureDataActivity extends AppCompatActivity implements View.OnClic
                         Toast.makeText(FigureDataActivity.this, "更新失败，稍后重试！", Toast.LENGTH_SHORT).show();
                         finish();
                     }
-
+                    break;
             }
         }
     };
