@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PersonalHealthCare</string>
+    <string name="button_showDefaultDialog">Default</string>
+    <string name="button_showQMUIDialog">QMUI</string>
+    <string name="title_activity_ordinary_user">OrdinaryUserActivity</string>
+    <string name="title_home">首页</string>
+    <string name="title_diet">饮食记录</string>
+    <string name="title_sleep_state">睡眠记录</string>
+    <string name="title_settings">设置</string>
 </resources>
