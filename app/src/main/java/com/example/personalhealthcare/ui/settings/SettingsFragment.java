@@ -1,5 +1,6 @@
 package com.example.personalhealthcare.ui.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.personalhealthcare.FigureDataActivity;
+import com.example.personalhealthcare.OrdinaryUserActivity;
 import com.example.personalhealthcare.R;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
@@ -36,6 +39,7 @@ public class SettingsFragment extends Fragment {
 
         return root;
     }
+
     private void initGroupListView(QMUIGroupListView mGroupListView) {
 
         //身体数据
@@ -53,6 +57,16 @@ public class SettingsFragment extends Fragment {
         itemDeleteUser.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
         itemDeleteUser.getTextView().setTextColor(getResources().getColor(R.color.qmui_config_color_red));
 
+        View.OnClickListener toFigureDataListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence text = ((QMUICommonListItemView) v).getText();
+                Toast.makeText(getActivity(), text + " is Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), FigureDataActivity.class);
+                startActivity(intent);
+            }
+        };
+
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,10 +81,12 @@ public class SettingsFragment extends Fragment {
         };
 
         QMUIGroupListView.newSection(getContext())
+                .setUseDefaultTitleIfNone(false)
+                .setUseTitleViewForSectionSpace(false)
                 .setTitle("个人信息和设置")
                 .setDescription("...")
                 .setLeftIconSize(QMUIDisplayHelper.dp2px(getContext(), 20), ViewGroup.LayoutParams.WRAP_CONTENT)
-                .addItemView(itemFigureData, onClickListener)
+                .addItemView(itemFigureData, toFigureDataListener)
                 .addItemView(itemChangePSWD, onClickListener)
                 .addItemView(itemDeleteUser, onClickListener)
                 .setMiddleSeparatorInset(QMUIDisplayHelper.dp2px(getContext(), 16), 0)
