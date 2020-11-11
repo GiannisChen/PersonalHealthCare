@@ -7,7 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0px"
+        android:layout_marginTop="?attr/actionBarSize"
         android:background="@color/qmui_config_color_background"
         android:fitsSystemWindows="true">
 
@@ -20,4 +20,10 @@
         </com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView>
 
     </ScrollView>
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" />
 </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

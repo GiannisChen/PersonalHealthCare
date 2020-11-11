@@ -20,6 +20,7 @@ import com.example.personalhealthcare.FigureDataActivity;
 import com.example.personalhealthcare.OrdinaryUserActivity;
 import com.example.personalhealthcare.R;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
+import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 
@@ -29,6 +30,8 @@ public class SettingsFragment extends Fragment {
 
     private SettingsViewModel settingsViewModel;
 
+    private QMUITopBarLayout mTopBar;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         settingsViewModel =
@@ -37,6 +40,9 @@ public class SettingsFragment extends Fragment {
 
         mGroupListView = root.findViewById(R.id.settings_groupListView);
         initGroupListView(mGroupListView);
+
+        mTopBar = root.findViewById(R.id.topbar);
+        mTopBar.setTitle("个人信息和设置");
 
         return root;
     }

@@ -1,6 +1,7 @@
 package com.example.personalhealthcare.ui.SleepState;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,6 +27,7 @@ import com.example.personalhealthcare.Service.SleepStateService;
 import com.example.personalhealthcare.ServiceImpl.SleepStateServiceImpl;
 import com.qmuiteam.qmui.skin.QMUISkinManager;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
+import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 import com.qmuiteam.qmui.widget.popup.QMUIPopups;
@@ -43,6 +45,7 @@ public class SleepStateFragment extends Fragment {
     private List<SleepState> stateList;
     private Handler mainHandler;
     private SleepStateService sleepStateService = new SleepStateServiceImpl();
+    private QMUITopBarLayout mTopBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,8 +54,9 @@ public class SleepStateFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_sleep_state, container, false);
 
         mGroupListView = root.findViewById(R.id.sleep_state_groupListView);
+        mTopBar = root.findViewById(R.id.topbar);
         initGroupListView(mGroupListView);
-
+        initTopBar();
         return root;
     }
 
@@ -60,6 +64,38 @@ public class SleepStateFragment extends Fragment {
     private void initGroupListView(final QMUIGroupListView mGroupListView) {
         stateList = new ArrayList<>();
         mainHandler = new Handler(Looper.getMainLooper());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                stateList = sleepStateService.getSleepStateByID(4);
+                mainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        showSleepState(mGroupListView);
+                    }
+                });
+            }
+        }).start();
+    }
+
+    private void initTopBar() {
+        mTopBar.addRightImageButton(R.drawable.ic_add_black_24dp, R.id.qmui_topbar_item_left_back);
+        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mTopBar.setTitle("睡眠记录");
+    }
+
+    //刷新
+    private void reInitGroupListView(final QMUIGroupListView mGroupListView) {
+        stateList = new ArrayList<>();
+        mainHandler = new Handler(Looper.getMainLooper());
+        mGroupListView.removeAllViews();
 
         new Thread(new Runnable() {
             @Override
@@ -159,23 +195,10 @@ public class SleepStateFragment extends Fragment {
                     Boolean flag = (Boolean)msg.obj;
                     if(flag) {
                         Toast.makeText(getContext(), "删除成功！", Toast.LENGTH_SHORT).show();
-                        FragmentManager fgManager = getFragmentManager();
-
-                        //Activity用来管理它包含的Frament，通过getFramentManager()获取
-
-                        FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
-
-                        //获取Framgent事务
-
-                        fragmentTransaction.replace(R.layout.fragment_sleep_state, new SleepStateFragment());
-                        //其实替换就是先调用remove()方法，之后再掉用add();
-                        //指定动画，可以自己添加
-                        //如果需要，添加到back栈中
-                        fragmentTransaction.commit();
+                        reInitGroupListView(mGroupListView);
                     }
                     else {
                         Toast.makeText(getContext(), "删除失败！", Toast.LENGTH_SHORT).show();
-
                     }
                     break;
             }
