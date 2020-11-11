@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/QMUI.Compat">
-        <activity android:name=".AddSleepStateActivity"></activity>
+        <activity android:name=".AddDietActivity"></activity>
+        <activity android:name=".AddSleepStateActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity
             android:name=".FigureDataActivity"

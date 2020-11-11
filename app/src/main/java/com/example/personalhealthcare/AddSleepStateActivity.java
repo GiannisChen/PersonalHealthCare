@@ -53,7 +53,7 @@ public class AddSleepStateActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initView() {
-        setTitle("修改密码");
+        setTitle("添加睡眠记录");
         sleepDuration = findViewById(R.id.add_sleep_state_duration);
         sleepDate = findViewById(R.id.add_sleep_state_datetime);
         buttonConfirm = findViewById(R.id.button_sleep_state_confirm);

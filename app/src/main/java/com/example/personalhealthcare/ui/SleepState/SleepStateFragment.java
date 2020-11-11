@@ -97,7 +97,6 @@ public class SleepStateFragment extends Fragment {
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getContext(), "fuck", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), AddSleepStateActivity.class);
                         startActivity(intent);
                     }
@@ -115,7 +114,7 @@ public class SleepStateFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                stateList = sleepStateService.getSleepStateByID(4);
+                stateList = sleepStateService.getSleepStateByID(UserID);
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
