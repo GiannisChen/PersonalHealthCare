@@ -1,5 +1,8 @@
 package com.example.personalhealthcare.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
+import com.example.personalhealthcare.PO.User;
 import com.example.personalhealthcare.R;
 
 public class HomeFragment extends Fragment {
+
+    private Integer UserID;
 
     private HomeViewModel homeViewModel;
 
@@ -30,6 +37,14 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
+        SharedPreferences sp = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        if(sp != null) {
+            UserID = new Integer(sp.getInt("UserID", 0));
+            if(UserID != null)
+                System.out.println("UserID:" + UserID.toString());
+        }
         return root;
     }
 }

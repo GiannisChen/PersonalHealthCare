@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,11 +34,20 @@ public class FigureDataActivity extends AppCompatActivity implements View.OnClic
     private QMUIRoundButton buttonBack;
     private UserService userService = new UserServiceImpl();
     private OrdinaryUser user;
+    private Integer UserID = new Integer(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_figure_data);
+
+        SharedPreferences sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        if(sp != null) {
+            UserID = new Integer(sp.getInt("UserID", 0));
+            if(UserID != null)
+                System.out.println("UserID:" + UserID.toString());
+        }
+
         initView();
     }
 
@@ -99,7 +110,7 @@ public class FigureDataActivity extends AppCompatActivity implements View.OnClic
         new Thread(new Runnable() {
             @Override
             public void run() {
-                OrdinaryUser user = userService.getPersonalDetail(4);
+                OrdinaryUser user = userService.getPersonalDetail(UserID);
                 System.out.println(user);
                 Message msg = Message.obtain();
                 msg.what = 0;

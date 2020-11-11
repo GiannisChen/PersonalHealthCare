@@ -1,7 +1,9 @@
 package com.example.personalhealthcare.ui.SleepState;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.personalhealthcare.AddSleepStateActivity;
 import com.example.personalhealthcare.OrdinaryUserActivity;
 import com.example.personalhealthcare.PO.SleepState;
 import com.example.personalhealthcare.R;
@@ -46,6 +49,7 @@ public class SleepStateFragment extends Fragment {
     private Handler mainHandler;
     private SleepStateService sleepStateService = new SleepStateServiceImpl();
     private QMUITopBarLayout mTopBar;
+    private Integer UserID = new Integer(0);
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +61,14 @@ public class SleepStateFragment extends Fragment {
         mTopBar = root.findViewById(R.id.topbar);
         initGroupListView(mGroupListView);
         initTopBar();
+
+        SharedPreferences sp = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        if(sp != null) {
+            UserID = new Integer(sp.getInt("UserID", 0));
+            if(UserID != null)
+                System.out.println("UserID:" + UserID.toString());
+        }
+
         return root;
     }
 
@@ -68,7 +80,7 @@ public class SleepStateFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                stateList = sleepStateService.getSleepStateByID(4);
+                stateList = sleepStateService.getSleepStateByID(UserID);
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -84,7 +96,8 @@ public class SleepStateFragment extends Fragment {
         mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), AddSleepStateActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -123,8 +136,6 @@ public class SleepStateFragment extends Fragment {
                     if (v instanceof QMUICommonListItemView) {
                         CharSequence text = ((QMUICommonListItemView) v).getText();
                         String tmp = text.toString();
-                        System.out.println(tmp);
-                        System.out.println();
                         final Integer sleepStateID = stateList.get(Integer.parseInt(tmp.split(":")[0]) - 1).getSleepStateID();
                         Toast.makeText(getContext(), sleepStateID.toString(), Toast.LENGTH_SHORT).show();
                         QMUIPopups.quickAction(getContext(),
@@ -154,7 +165,6 @@ public class SleepStateFragment extends Fragment {
 
             Integer count = 1;
             for(SleepState s : stateList) {
-                System.out.println(s);
                 QMUICommonListItemView item = mGroupListView.createItemView(count.toString() + ": " + time.format(s.getSleepDate()));
                 item.setOrientation(QMUICommonListItemView.HORIZONTAL);
                 item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_NONE);

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +26,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     private QMUIRoundButton buttonConfirm;
     private QMUIRoundButton buttonBack;
     private UserService userService = new UserServiceImpl();
+    private Integer UserID = new Integer(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,14 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
     private void passwordConfirm() {
         final String oldPassword = editOldPassword.getText().toString();
         final String newPassword = editNewPassword.getText().toString();
+
+        SharedPreferences sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        if(sp != null) {
+            UserID = new Integer(sp.getInt("UserID", 0));
+            if(UserID != null)
+                System.out.println("UserID:" + UserID.toString());
+        }
+
         String confirmedPassword = editConfirmedPassword.getText().toString();
         if (TextUtils.isEmpty(oldPassword) || TextUtils.isEmpty(newPassword) || TextUtils.isEmpty(confirmedPassword)) {
             Toast.makeText(ChangePasswordActivity.this, "请填写完整!", Toast.LENGTH_SHORT).show();
@@ -69,7 +80,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
                 public void run() {
                     Message msg = Message.obtain();
                     msg.what = 0;
-                    msg.obj = userService.updatePassword(4, oldPassword, newPassword);
+                    msg.obj = userService.updatePassword(UserID, oldPassword, newPassword);
                     handler.sendMessage(msg);
                 }
             }).start();
