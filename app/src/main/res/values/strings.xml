@@ -8,4 +8,9 @@
     <string name="title_sleep_state">睡眠记录</string>
     <string name="title_settings">设置</string>
     <string name="figure_data">个人数据</string>
+
+    <string name="loginPwd">登录密码</string>
+    <string name="loginName">用户昵称</string>
+    <string name="forget"><u>忘了密码？</u></string>
+    <string name="logUp"><u>注 册</u></string>
 </resources>

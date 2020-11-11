@@ -11,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/QMUI.Compat">
-        <activity android:name=".AddDietActivity"></activity>
+        <activity android:name=".LogInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".AddDietActivity" />
         <activity android:name=".AddSleepStateActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity
@@ -21,11 +29,6 @@
             android:name=".OrdinaryUserActivity"
             android:label="@string/title_activity_ordinary_user"
             android:theme="@style/QMUI.Compat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
