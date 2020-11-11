@@ -19,4 +19,9 @@ public class SleepStateServiceImpl implements SleepStateService {
     public Boolean deleteSleepState(Integer SleepStateID) {
         return sleepStateDao.delete(SleepStateID);
     }
+
+    @Override
+    public Boolean addSleepState(SleepState sleepState) {
+        return sleepStateDao.insert(sleepState);
+    }
 }

@@ -59,8 +59,6 @@ public class SleepStateFragment extends Fragment {
 
         mGroupListView = root.findViewById(R.id.sleep_state_groupListView);
         mTopBar = root.findViewById(R.id.topbar);
-        initGroupListView(mGroupListView);
-        initTopBar();
 
         SharedPreferences sp = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         if(sp != null) {
@@ -68,6 +66,9 @@ public class SleepStateFragment extends Fragment {
             if(UserID != null)
                 System.out.println("UserID:" + UserID.toString());
         }
+
+        initGroupListView(mGroupListView);
+        initTopBar();
 
         return root;
     }
@@ -92,14 +93,15 @@ public class SleepStateFragment extends Fragment {
     }
 
     private void initTopBar() {
-        mTopBar.addRightImageButton(R.drawable.ic_add_black_24dp, R.id.qmui_topbar_item_left_back);
-        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddSleepStateActivity.class);
-                startActivity(intent);
-            }
-        });
+        mTopBar.addRightImageButton(R.drawable.ic_add_black_24dp, R.id.qmui_topbar_item_left_back)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getContext(), "fuck", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), AddSleepStateActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
         mTopBar.setTitle("睡眠记录");
     }
