@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="species">
+        <item>肉类</item>
+        <item>蔬菜</item>
+        <item>水果</item>
+        <item>主食</item>
+        <item>干果</item>
+        <item>水产</item>
+        <item>饮品</item>
+    </string-array>
+</resources>

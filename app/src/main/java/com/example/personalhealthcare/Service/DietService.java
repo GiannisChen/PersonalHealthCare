@@ -12,4 +12,5 @@ public interface DietService {
     List<FoodData> getFoodData();
     Boolean addDiet(Diet diet);
     Boolean deleteFood(Integer foodID);
+    Boolean addFood(FoodData foodData);
 }
