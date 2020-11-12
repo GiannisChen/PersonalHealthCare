@@ -13,4 +13,5 @@ public interface DietService {
     Boolean addDiet(Diet diet);
     Boolean deleteFood(Integer foodID);
     Boolean addFood(FoodData foodData);
+    FoodData getFoodDataByID(Integer FoodID);
 }

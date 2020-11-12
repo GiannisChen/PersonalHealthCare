@@ -41,6 +41,9 @@ public class AddFoodActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initView() {
+
+        setTitle("添加食品信息");
+
         editFoodName = findViewById(R.id.add_food_name);
         editFoodCalories = findViewById(R.id.add_food_calories);
 
