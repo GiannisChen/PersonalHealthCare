@@ -35,4 +35,9 @@ public class DietServiceImpl implements DietService {
     public Boolean addDiet(Diet diet) {
         return dietDao.insert(diet);
     }
+
+    @Override
+    public Boolean deleteFood(Integer foodID) {
+        return foodDataDao.delete(foodID);
+    }
 }

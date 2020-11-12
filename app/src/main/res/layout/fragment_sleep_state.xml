@@ -9,7 +9,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:background="@color/qmui_config_color_background"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:paddingBottom="40dp">
 
         <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
             android:id="@+id/sleep_state_groupListView"
