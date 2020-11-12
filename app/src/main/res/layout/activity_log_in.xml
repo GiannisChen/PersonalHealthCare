@@ -26,6 +26,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="60dp"
             android:hint="@string/loginName"
+            android:text="try"
             android:textSize="20sp"
             android:ems="10"
             android:inputType="textEmailAddress" />
@@ -36,6 +37,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:hint="@string/loginPwd"
+            android:text="1234567890"
             android:textSize="20sp"
             android:ems="10"
             android:inputType="textPassword" />

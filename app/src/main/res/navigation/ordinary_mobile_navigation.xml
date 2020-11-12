@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.personalhealthcare.ui.ordinaryHome.OrdinaryHomeFragment"
+        android:label="@string/title_ordinary_home"
+        tools:layout="@layout/fragment_ordinary_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_settings2"
+            app:destination="@+id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_diet"
+            app:destination="@id/navigation_diet" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_sleep_state"
+            app:destination="@id/navigation_sleep_state" />
+        <argument
+            android:name="UserID"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_diet"
+        android:name="com.example.personalhealthcare.ui.Diet.DietFragment"
+        android:label="@string/title_diet"
+        tools:layout="@layout/fragment_diet" >
+        <argument
+            android:name="UserID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_navigation_diet_to_navigation_sleep_state"
+            app:destination="@id/navigation_sleep_state" />
+        <action
+            android:id="@+id/action_navigation_diet_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_diet_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_sleep_state"
+        android:name="com.example.personalhealthcare.ui.sleepState.SleepStateFragment"
+        android:label="@string/title_sleep_state"
+        tools:layout="@layout/fragment_sleep_state" >
+        <argument
+            android:name="UserID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_navigation_sleep_state_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_sleep_state_to_navigation_diet"
+            app:destination="@id/navigation_diet" />
+        <action
+            android:id="@+id/action_navigation_sleep_state_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.personalhealthcare.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" >
+        <argument
+            android:name="UserID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_sleep_state"
+            app:destination="@id/navigation_sleep_state" />
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_diet"
+            app:destination="@id/navigation_diet" />
+    </fragment>
+</navigation>

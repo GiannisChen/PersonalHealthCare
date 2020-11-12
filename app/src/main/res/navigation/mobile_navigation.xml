@@ -7,81 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.personalhealthcare.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_settings2"
-            app:destination="@+id/navigation_settings" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_diet"
-            app:destination="@id/navigation_diet" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_sleep_state"
-            app:destination="@id/navigation_sleep_state" />
-        <argument
-            android:name="UserID"
-            app:argType="integer"
-            android:defaultValue="0" />
-    </fragment>
+        android:name="com.example.personalhealthcare.ui.adminHome.AdminHomeFragment"
+        android:label="@string/title_admin_home"
+        tools:layout="@layout/fragment_admin_home" />
 
     <fragment
-        android:id="@+id/navigation_diet"
-        android:name="com.example.personalhealthcare.ui.Diet.DietFragment"
-        android:label="@string/title_diet"
-        tools:layout="@layout/fragment_diet" >
-        <argument
-            android:name="UserID"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_navigation_diet_to_navigation_sleep_state"
-            app:destination="@id/navigation_sleep_state" />
-        <action
-            android:id="@+id/action_navigation_diet_to_navigation_settings"
-            app:destination="@id/navigation_settings" />
-        <action
-            android:id="@+id/action_navigation_diet_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
+        android:id="@+id/navigation_food"
+        android:name="com.example.personalhealthcare.ui.food.FoodFragment"
+        android:label="@string/title_admin_food"
+        tools:layout="@layout/fragment_food" />
 
     <fragment
-        android:id="@+id/navigation_sleep_state"
-        android:name="com.example.personalhealthcare.ui.SleepState.SleepStateFragment"
-        android:label="@string/title_sleep_state"
-        tools:layout="@layout/fragment_sleep_state" >
-        <argument
-            android:name="UserID"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_navigation_sleep_state_to_navigation_settings"
-            app:destination="@id/navigation_settings" />
-        <action
-            android:id="@+id/action_navigation_sleep_state_to_navigation_diet"
-            app:destination="@id/navigation_diet" />
-        <action
-            android:id="@+id/action_navigation_sleep_state_to_navigation_home"
-            app:destination="@id/navigation_home" />
-    </fragment>
+        android:id="@+id/navigation_feedback"
+        android:name="com.example.personalhealthcare.ui.feedback.FeedbackFragment"
+        android:label="@string/title_admin_feedback"
+        tools:layout="@layout/fragment_feedback" />
 
     <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.example.personalhealthcare.ui.settings.SettingsFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_settings" >
-        <argument
-            android:name="UserID"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_navigation_settings_to_navigation_home"
-            app:destination="@id/navigation_home" />
-        <action
-            android:id="@+id/action_navigation_settings_to_navigation_sleep_state"
-            app:destination="@id/navigation_sleep_state" />
-        <action
-            android:id="@+id/action_navigation_settings_to_navigation_diet"
-            app:destination="@id/navigation_diet" />
-    </fragment>
+        android:id="@+id/navigation_admin_settings"
+        android:name="com.example.personalhealthcare.ui.adminSettings.AdminSettingsFragment"
+        android:label="@string/title_admin_settings"
+        tools:layout="@layout/fragment_admin_settings" />
 </navigation>

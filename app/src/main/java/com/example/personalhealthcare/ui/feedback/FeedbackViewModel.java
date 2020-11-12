@@ -1,16 +1,15 @@
-package com.example.personalhealthcare.ui.home;
+package com.example.personalhealthcare.ui.feedback;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class FeedbackViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+    public FeedbackViewModel() {
+
     }
 
     public LiveData<String> getText() {

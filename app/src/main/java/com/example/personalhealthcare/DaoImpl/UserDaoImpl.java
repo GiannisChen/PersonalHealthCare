@@ -246,6 +246,34 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> findOrdinaryOnlyBaseInfo() {
+        try {
+            List<User> list = new LinkedList<>();
+            Connection conn = MyConnections.getConnection();
+            String sql = "select * from master.dbo.[User] where UserType = 'User';";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            ResultSet rs = psmt.executeQuery();
+
+            while(rs.next()) {
+                list.add(new User( rs.getInt("UserID"),
+                        rs.getString("UserEmail"),
+                        rs.getString("UserName"),
+                        rs.getString("UserPassword"),
+                        rs.getTimestamp("RegisterTime"),
+                        rs.getString("UserType")));
+            }
+
+            conn.close();
+            psmt.close();
+            rs.close();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
     public List<OrdinaryUser> findOrdinary() {
         try {
             List<OrdinaryUser> list = new LinkedList<>();
@@ -410,6 +438,35 @@ public class UserDaoImpl implements UserDao {
                                 rs.getDouble("UserBP"),
                                 rs.getInt("UserAge")
                         ));
+            }
+
+            conn.close();
+            psmt.close();
+            rs.close();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public User findByName(String UserName) {
+        try {
+            User result = null;
+            Connection conn = MyConnections.getConnection();
+            String sql = "select * from master.dbo.[User] where UserName = ?;";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setString(1,UserName);
+            ResultSet rs = psmt.executeQuery();
+
+            while(rs.next()) {
+                result = new User( rs.getInt("UserID"),
+                        rs.getString("UserEmail"),
+                        rs.getString("UserName"),
+                        rs.getString("UserPassword"),
+                        rs.getTimestamp("RegisterTime"),
+                        rs.getString("UserType"));
             }
 
             conn.close();

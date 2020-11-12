@@ -3,7 +3,7 @@
     <string name="button_showDefaultDialog">Default</string>
     <string name="button_showQMUIDialog">QMUI</string>
     <string name="title_activity_ordinary_user">OrdinaryUserActivity</string>
-    <string name="title_home">首页</string>
+    <string name="title_ordinary_home">首页</string>
     <string name="title_diet">饮食记录</string>
     <string name="title_sleep_state">睡眠记录</string>
     <string name="title_settings">设置</string>
@@ -13,4 +13,10 @@
     <string name="loginName">用户昵称</string>
     <string name="forget"><u>忘了密码？</u></string>
     <string name="logUp"><u>注 册</u></string>
+
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="title_admin_home">用户管理</string>
+    <string name="title_admin_food">食物管理</string>
+    <string name="title_admin_feedback">反馈管理</string>
+    <string name="title_admin_settings">个人设置</string>
 </resources>

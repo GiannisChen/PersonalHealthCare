@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/QMUI.Compat">
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin"></activity>
+        <activity android:name=".LogUpActivity" />
         <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +32,7 @@
         <activity
             android:name=".OrdinaryUserActivity"
             android:label="@string/title_activity_ordinary_user"
-            android:theme="@style/QMUI.Compat">
-        </activity>
+            android:theme="@style/QMUI.Compat" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/QMUI.Compat" />

@@ -14,9 +14,11 @@ public interface UserDao {
     Boolean updateOrdinary(OrdinaryUser user);
     List<User> findAll();
     List<User> findAdmin();
+    List<User> findOrdinaryOnlyBaseInfo();
     List<OrdinaryUser> findOrdinary();
     User findAdminByID(Integer UserID);
     OrdinaryUser findOrdinaryByID(Integer UserID);
     User findAdminByName(String UserName);
     OrdinaryUser findOrdinaryByName(String UserName);
+    User findByName(String UserName);
 }
