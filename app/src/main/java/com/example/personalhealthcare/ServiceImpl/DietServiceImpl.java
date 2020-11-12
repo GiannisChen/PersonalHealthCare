@@ -50,4 +50,9 @@ public class DietServiceImpl implements DietService {
     public FoodData getFoodDataByID(Integer FoodID) {
         return foodDataDao.findByFoodID(FoodID);
     }
+
+    @Override
+    public Boolean updateFoodData(FoodData foodData) {
+        return foodDataDao.update(foodData);
+    }
 }

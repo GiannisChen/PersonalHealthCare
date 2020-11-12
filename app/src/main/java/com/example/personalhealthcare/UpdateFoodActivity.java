@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,8 +21,10 @@ import com.example.personalhealthcare.ServiceImpl.DietServiceImpl;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 
 import java.sql.Array;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,7 +68,7 @@ public class UpdateFoodActivity extends AppCompatActivity implements View.OnClic
 
         mainHandler = new Handler(Looper.getMainLooper());
 
-        spinnerSpecies = findViewById(R.id.add_food_spinner);
+        spinnerSpecies = findViewById(R.id.update_food_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.species,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -104,15 +107,33 @@ public class UpdateFoodActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void updateFoodData() {
-
+        String foodName = editFoodName.getText().toString();
+        String foodSpecies = spinnerSpecies.getSelectedItem().toString();
+        Double foodCalories = Double.parseDouble(editFoodCalories.getText().toString());
+        if(!TextUtils.isEmpty(foodName) && !TextUtils.isEmpty(foodSpecies) && foodCalories != null && foodCalories >= 0) {
+            foodData.setFoodName(foodName);
+            foodData.setFoodSpecies(foodSpecies);
+            foodData.setCalorie(foodCalories);
+            foodData.setUpdateTime(new Timestamp(Calendar.getInstance().getTimeInMillis()));
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Message msg = Message.obtain();
+                    msg.what = 0;
+                    msg.obj = dietService.updateFoodData(foodData);
+                    handler.sendMessage(msg);
+                }
+            }).start();
+        }
     }
 
     private void fillSpinner(FoodData foodData) {
         List<String> species = new ArrayList<>(Arrays.asList("肉类", "蔬菜", "水果", "主食", "干果", "水产", "饮品"));
-        editFoodName.setHint(foodData.getFoodName());
-        editFoodCalories.setText(foodData.getFoodSpecies());
+        editFoodName.setText(foodData.getFoodName());
+        editFoodCalories.setText(foodData.getCalorie().toString());
         //todo
-        //spinnerSpecies.setSelection(species.);
+        int index = species.indexOf(foodData.getFoodSpecies());
+        spinnerSpecies.setSelection(index >= 0 ? index : 0);
     }
 
     @SuppressLint("HandlerLeak")
