@@ -112,6 +112,22 @@
                     android:textColor="?attr/qmui_config_color_gray_5"
                     android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
             </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="20dp"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/button_food_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:srcCompat="@mipmap/img_add" />
+            </LinearLayout>
+
             <!--注册按钮位置-->
             <LinearLayout
                 android:layout_width="match_parent"
