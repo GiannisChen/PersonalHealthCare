@@ -14,7 +14,7 @@ public class ImageUtils {
     }
 
     public static Bitmap Bytes2Bitmap(byte[] bytes) {
-        if(bytes.length != 0) {
+        if(bytes != null && bytes.length != 0) {
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         } else {
             return null;

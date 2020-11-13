@@ -60,7 +60,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/test1" />
+                        android:src="@mipmap/ic_no_image2" />
 
                     <TextView
                         android:id="@+id/item_food_name_1"
@@ -69,7 +69,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="计算机网络基础"
+                        android:text="食物名称"
                         android:textAlignment="center"
                         android:textColor="@color/qmui_config_color_black"
                         android:textSize="18sp"
@@ -105,7 +105,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/test1" />
+                        android:src="@mipmap/ic_no_image2" />
 
                     <TextView
                         android:id="@+id/item_food_name_2"
@@ -114,7 +114,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="计算机网络基础"
+                        android:text="食物名称"
                         android:textAlignment="center"
                         android:textColor="@color/qmui_config_color_black"
                         android:textSize="18sp"
@@ -158,7 +158,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/test1" />
+                        android:src="@mipmap/ic_no_image2" />
 
                     <TextView
                         android:id="@+id/item_food_name_3"
@@ -167,7 +167,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="计算机网络基础"
+                        android:text="食物名称"
                         android:textAlignment="center"
                         android:textColor="@color/qmui_config_color_black"
                         android:textSize="18sp"
@@ -203,7 +203,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/test1" />
+                        android:src="@mipmap/ic_no_image2" />
 
                     <TextView
                         android:id="@+id/item_food_name_4"
@@ -212,7 +212,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:text="计算机网络基础"
+                        android:text="食物名称"
                         android:textAlignment="center"
                         android:textColor="@color/qmui_config_color_black"
                         android:textSize="18sp"
@@ -245,7 +245,7 @@
                 android:layout_weight="1" />
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                android:id="@+id/button_add_food_confirm"
+                android:id="@+id/button_show_me_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -262,7 +262,7 @@
                 android:layout_weight="1" />
 
             <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                android:id="@+id/button_add_food_back"
+                android:id="@+id/button_change_recommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
