@@ -36,4 +36,5 @@ dependencies {
     implementation 'com.qmuiteam:qmui:2.0.0-alpha10'
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
 }
