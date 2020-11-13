@@ -8,4 +8,6 @@ public interface FeedbackService {
     Boolean addFeedback(Feedback feedback);
     List<Feedback> getAllUnresolvedFeedback();
     Boolean deleteFeedback(Integer questionID);
+    Feedback getFeedbackByID(Integer questionID);
+    Boolean updateFeedback(Feedback feedback);
 }

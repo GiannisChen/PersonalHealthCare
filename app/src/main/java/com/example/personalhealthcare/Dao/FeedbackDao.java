@@ -13,4 +13,5 @@ public interface FeedbackDao {
     List<Feedback> findByReplierID(Integer UserID);
     List<Feedback> findResolved();
     List<Feedback> findUnresolved();
+    Feedback findByID(Integer QuestionID);
 }

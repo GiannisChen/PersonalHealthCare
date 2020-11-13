@@ -92,6 +92,9 @@ public class UpdateFoodActivity extends AppCompatActivity implements View.OnClic
                 }
             }).start();
         }
+        else {
+            Toast.makeText(this, "未知错误！", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -124,6 +127,9 @@ public class UpdateFoodActivity extends AppCompatActivity implements View.OnClic
                     handler.sendMessage(msg);
                 }
             }).start();
+        }
+        else {
+            Toast.makeText(this, "请填写完整！", Toast.LENGTH_SHORT).show();
         }
     }
 

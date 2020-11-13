@@ -1,9 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WriteFeedbackActivity">
+    tools:context=".WriteFeedbackActivity"
+    android:paddingTop="40dp"
+    android:orientation="vertical">
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:background="@color/qmui_config_color_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--注册标题文字-->
+
+            <!--边框分割细线-->
+            <!--账户、手机号、密码输入框-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/feedback_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="标题"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/feedback_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="用户反馈正文内容"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_white"
+                android:columnCount="2"
+                android:focusable="true"
+                android:layout_marginTop="30dp"
+                android:focusableInTouchMode="true">
+                <!--标题-->
+                <!--可修改-->
+                <!--新密码-->
+                <!--可修改-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_gravity="fill_horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/common_content_spacing"
+                    android:paddingRight="@dimen/common_content_spacing"
+                    android:text="回复"
+                    android:textColor="?attr/qmui_config_color_gray_1"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
+
+                <EditText
+                    android:id="@+id/update_feedback_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="413dp"
+                    android:layout_gravity="fill"
+                    android:background="@drawable/qmui_divider_bottom_bitmap"
+                    android:hint="内容至多100字"
+                    android:inputType="textMultiLine"
+                    android:maxLength="100"
+                    android:textColor="?attr/qmui_config_color_gray_5"
+                    android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
+            </GridLayout>
+            <!--注册按钮位置-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/qmui_config_color_white"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:padding="@dimen/common_content_spacing">
+
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/button_feedback_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="提交回复"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size"
+                    app:qmui_isRadiusAdjustBounds="true" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    android:id="@+id/button_feedback_back"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="2"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="返回"
+                    android:textSize="?attr/qmui_common_list_item_title_h_text_size"
+                    app:qmui_isRadiusAdjustBounds="true" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>

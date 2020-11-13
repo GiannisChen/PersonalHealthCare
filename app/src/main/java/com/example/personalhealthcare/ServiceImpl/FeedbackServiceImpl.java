@@ -25,4 +25,14 @@ public class FeedbackServiceImpl implements FeedbackService {
     public Boolean deleteFeedback(Integer questionID) {
         return feedbackDao.delete(questionID);
     }
+
+    @Override
+    public Feedback getFeedbackByID(Integer questionID) {
+        return feedbackDao.findByID(questionID);
+    }
+
+    @Override
+    public Boolean updateFeedback(Feedback feedback) {
+        return feedbackDao.update(feedback);
+    }
 }
