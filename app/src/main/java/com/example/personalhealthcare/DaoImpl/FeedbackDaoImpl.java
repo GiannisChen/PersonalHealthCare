@@ -251,4 +251,36 @@ public class FeedbackDaoImpl implements FeedbackDao {
             return null;
         }
     }
+
+    @Override
+    public Feedback findByID(Integer QuestionID) {
+        try {
+            Feedback feedback = null;
+            Connection conn = MyConnections.getConnection();
+            String sql = "select * from master.dbo.[Feedback] where QuestionID = ?;";
+            PreparedStatement psmt = conn.prepareStatement(sql);
+            psmt.setInt(1, QuestionID);
+            ResultSet rs = psmt.executeQuery();
+
+            while(rs.next()) {
+                feedback = new Feedback(rs.getInt("QuestionID"),
+                        rs.getInt("UserID"),
+                        rs.getTimestamp("InquiryTime"),
+                        rs.getString("QuestionTitle"),
+                        rs.getString("QuestionContent"),
+                        rs.getInt("IsResolved"),
+                        rs.getInt("ReplierID"),
+                        rs.getTimestamp("FeedbackTime"),
+                        rs.getString("FeedbackContent"));
+            }
+
+            conn.close();
+            psmt.close();
+            rs.close();
+            return feedback;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

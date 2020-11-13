@@ -5,6 +5,8 @@ import com.example.personalhealthcare.DaoImpl.FeedbackDaoImpl;
 import com.example.personalhealthcare.PO.Feedback;
 import com.example.personalhealthcare.Service.FeedbackService;
 
+import java.util.List;
+
 public class FeedbackServiceImpl implements FeedbackService {
 
     private FeedbackDao feedbackDao = new FeedbackDaoImpl();
@@ -12,5 +14,25 @@ public class FeedbackServiceImpl implements FeedbackService {
     @Override
     public Boolean addFeedback(Feedback feedback) {
         return feedbackDao.insert(feedback);
+    }
+
+    @Override
+    public List<Feedback> getAllUnresolvedFeedback() {
+        return feedbackDao.findUnresolved();
+    }
+
+    @Override
+    public Boolean deleteFeedback(Integer questionID) {
+        return feedbackDao.delete(questionID);
+    }
+
+    @Override
+    public Feedback getFeedbackByID(Integer questionID) {
+        return feedbackDao.findByID(questionID);
+    }
+
+    @Override
+    public Boolean updateFeedback(Feedback feedback) {
+        return feedbackDao.update(feedback);
     }
 }

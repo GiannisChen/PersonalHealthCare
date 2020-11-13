@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFoodActivity"
+    tools:context=".WriteFeedbackActivity"
+    android:paddingTop="40dp"
     android:orientation="vertical">
     <com.qmuiteam.qmui.widget.QMUITopBar
         android:id="@+id/topbar"
@@ -14,6 +15,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
         android:background="@color/qmui_config_color_background">
 
         <LinearLayout
@@ -21,113 +23,70 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <!--注册标题文字-->
-            <TextView
-                android:id="@+id/textview_validateinfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/qmui_group_list_section_header_footer_padding_vertical"
-                android:paddingLeft="?attr/qmui_content_padding_horizontal"
-                android:paddingRight="?attr/qmui_content_padding_horizontal"
-                android:paddingTop="@dimen/qmui_group_list_section_header_footer_padding_vertical"
-                android:text="修改密码"
-                android:textColor="?attr/qmui_config_color_gray_3"
-                android:textSize="@dimen/qmui_group_list_section_header_footer_text_size" />
+
             <!--边框分割细线-->
+            <!--账户、手机号、密码输入框-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
-            <!--账户、手机号、密码输入框-->
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/feedback_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="标题"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="24sp"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/feedback_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="用户反馈正文内容"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/qmui_config_color_white"
                 android:columnCount="2"
                 android:focusable="true"
+                android:layout_marginTop="30dp"
                 android:focusableInTouchMode="true">
-                <!--名称-->
+                <!--标题-->
+                <!--可修改-->
+                <!--新密码-->
+                <!--可修改-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/qmui_list_item_height"
+                    android:layout_row="0"
+                    android:layout_column="0"
                     android:layout_gravity="fill_horizontal"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/common_content_spacing"
                     android:paddingRight="@dimen/common_content_spacing"
-                    android:text="食品名称"
+                    android:text="回复"
                     android:textColor="?attr/qmui_config_color_gray_1"
                     android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
-                <!--可修改-->
+
                 <EditText
-                    android:id="@+id/add_food_name"
+                    android:id="@+id/update_feedback_content"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="413dp"
                     android:layout_gravity="fill"
                     android:background="@drawable/qmui_divider_bottom_bitmap"
-                    android:hint="限制长度为10"
-                    android:maxLength="10"
-                    android:inputType="text"
-                    android:textColor="?attr/qmui_config_color_gray_5"
-                    android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
-                <!--食物名-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/qmui_list_item_height"
-                    android:layout_gravity="fill_horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/common_content_spacing"
-                    android:paddingRight="@dimen/common_content_spacing"
-                    android:text="食品种类"
-                    android:textColor="?attr/qmui_config_color_gray_1"
-                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
-                <!--可修改-->
-                <Spinner
-                    android:id="@+id/add_food_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:background="@drawable/qmui_divider_bottom_bitmap"
-                    android:inputType="text"
-                    android:textColor="?attr/qmui_config_color_gray_5"
-                    android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
-                <!--食物数量-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/qmui_list_item_height"
-                    android:layout_gravity="fill_horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/common_content_spacing"
-                    android:paddingRight="@dimen/common_content_spacing"
-                    android:text="卡路里"
-                    android:textColor="?attr/qmui_config_color_gray_1"
-                    android:textSize="?attr/qmui_common_list_item_title_h_text_size" />
-                <!--可修改-->
-                <EditText
-                    android:id="@+id/add_food_calories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:background="@drawable/qmui_divider_bottom_bitmap"
-                    android:hint="单位（cal）"
-                    android:inputType="number"
-                    android:maxLength="5"
+                    android:hint="内容至多100字"
+                    android:inputType="textMultiLine"
+                    android:maxLength="100"
                     android:textColor="?attr/qmui_config_color_gray_5"
                     android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
             </GridLayout>
             <!--注册按钮位置-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="20dp"
-                android:background="@color/qmui_config_color_white"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/button_food_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    app:srcCompat="@mipmap/img_add" />
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,14 +102,14 @@
                     android:layout_weight="1" />
 
                 <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                    android:id="@+id/button_add_food_confirm"
+                    android:id="@+id/button_feedback_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:clickable="true"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="提交添加"
+                    android:text="提交回复"
                     android:textSize="?attr/qmui_common_list_item_title_h_text_size"
                     app:qmui_isRadiusAdjustBounds="true" />
 
@@ -160,7 +119,7 @@
                     android:layout_weight="1" />
 
                 <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                    android:id="@+id/button_add_food_back"
+                    android:id="@+id/button_feedback_back"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:layout_weight="2"
